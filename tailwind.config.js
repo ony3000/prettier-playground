@@ -1,4 +1,5 @@
 const { fontFamily } = require('tailwindcss/defaultTheme');
+const daisyUI = require('daisyui');
 
 /** @type {(size: string) => string} */
 const rem2px = (size) => `${Number.parseFloat(size) * 16}px`;
@@ -144,5 +145,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [daisyUI],
 };
