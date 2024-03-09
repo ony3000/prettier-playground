@@ -3,14 +3,15 @@ import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
 
-import { AppMain } from '@/components';
+import { classNames } from '@/adaptors';
+import { pretendard } from '@/fonts';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <RecoilRoot>
-      <AppMain>
+      <main className={classNames(pretendard.variable, 'font-sans')}>
         <Component {...pageProps} />
-      </AppMain>
+      </main>
     </RecoilRoot>
   );
 }

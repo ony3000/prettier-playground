@@ -1,7 +1,8 @@
 {
-  "name": "next-tailwind-template",
+  "name": "prettier-playground",
   "version": "0.1.0",
-  "description": "Template repository for personal project.",
+  "private": true,
+  "description": "Playground to get formatting results using a specific version of Prettier.",
   "author": "Hyeonjong <nianelo4@gmail.com>",
   "license": "MIT",
   "scripts": {
