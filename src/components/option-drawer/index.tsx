@@ -10,7 +10,10 @@ export function OptionDrawer({
         type="checkbox"
         className="drawer-toggle"
       />
-      <div className="drawer-content flex flex-col items-center justify-center">
+      <div
+        className="drawer-content flex h-screen flex-col items-center
+          justify-center"
+      >
         {children}
       </div>
       <div className="drawer-side">

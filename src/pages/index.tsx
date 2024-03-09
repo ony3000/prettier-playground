@@ -21,7 +21,23 @@ export default function Home() {
         />
       </Head>
       <OptionDrawer>
-        <div>Prettier Playground</div>
+        <div className="flex h-full w-full p-6">
+          <div className="card grid flex-grow place-items-center bg-base-300">
+            content1
+          </div>
+          <div className="divider divider-horizontal" />
+          <div className="flex-grow">
+            <div className="flex h-full flex-col">
+              <div className="card grid flex-grow place-items-center bg-base-300">
+                content2
+              </div>
+              <div className="divider" />
+              <div className="card grid flex-grow place-items-center bg-base-300">
+                content3
+              </div>
+            </div>
+          </div>
+        </div>
       </OptionDrawer>
     </>
   );
