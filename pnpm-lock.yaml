@@ -13,6 +13,9 @@ dependencies:
   '@types/node':
     specifier: 18.14.2
     version: 18.14.2
+  '@types/prettier2':
+    specifier: npm:@types/prettier@2.7.3
+    version: /@types/prettier@2.7.3
   '@types/react':
     specifier: 18.0.28
     version: 18.0.28
@@ -91,6 +94,9 @@ dependencies:
   prettier-plugin-tailwindcss:
     specifier: 0.4.1
     version: 0.4.1(@trivago/prettier-plugin-sort-imports@4.2.1)(prettier@2.8.4)
+  prettier2:
+    specifier: npm:prettier@2.8.4
+    version: /prettier@2.8.4
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -109,6 +115,9 @@ dependencies:
   typescript:
     specifier: 4.9.5
     version: 4.9.5
+  zod:
+    specifier: 3.22.4
+    version: 3.22.4
 
 packages:
 
@@ -1182,6 +1191,10 @@ packages:
 
   /@types/prettier@2.7.2:
     resolution: {integrity: sha512-KufADq8uQqo1pYKVIYzfKbJfBAc0sOeXqGbFaSpv8MRmC/zXgowNZmFcbngndGk922QDmOASEXUZCaY48gs4cg==}
+    dev: false
+
+  /@types/prettier@2.7.3:
+    resolution: {integrity: sha512-+68kP9yzs4LMp7VNh8gdzMSPZFL44MLGqiHWvttYJe+6qnuVr4Ek9wSBQoveqY/r+LwjCcU29kNVkidwim+kYA==}
     dev: false
 
   /@types/prop-types@15.7.5:
@@ -5428,4 +5441,8 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    dev: false
+
+  /zod@3.22.4:
+    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
     dev: false

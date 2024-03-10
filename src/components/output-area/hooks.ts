@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
+import { z } from 'zod';
 
 import { plainTextAtom } from '@/shared-kernel/stores';
+import { isTypeof } from '@/shared-kernel/utils';
 
-function format2(input: string, options: any): string {
-  return input;
-}
+import { v2Format, v3Format } from './libs';
 
-async function format3(input: string, options: any): Promise<string> {
-  return input;
-}
+// temporary use
+const prettierOptions: any = {
+  parser: 'babel',
+};
 
 export function useOutputArea(version: 2 | 3) {
   const plainText = useRecoilValue(plainTextAtom);
@@ -19,15 +20,29 @@ export function useOutputArea(version: 2 | 3) {
     async function formatAsync(text: string, options: any) {
       try {
         setFormattingResult(
-          version === 2 ? format2(text, options) : await format3(text, options),
+          version === 2
+            ? v2Format(text, options)
+            : await v3Format(text, options),
         );
       }
-      catch (err) {
-        console.warn(err);
+      catch (error) {
+        if (
+          isTypeof(
+            error,
+            z.object({
+              message: z.string(),
+            }),
+          )
+        ) {
+          setFormattingResult(error.message);
+          return;
+        }
+
+        console.error(error);
       }
     }
 
-    formatAsync(plainText, {});
+    formatAsync(plainText, prettierOptions);
   }, [plainText, version]);
 
   return {
