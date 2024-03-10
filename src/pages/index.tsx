@@ -29,10 +29,10 @@ export default function Home() {
           <div className="-mt-2 flex-grow">
             <div className="flex h-full flex-col">
               <div className="flex-grow">
-                <OutputArea />
+                <OutputArea version={2} />
               </div>
               <div className="flex-grow">
-                <OutputArea />
+                <OutputArea version={3} />
               </div>
             </div>
           </div>
