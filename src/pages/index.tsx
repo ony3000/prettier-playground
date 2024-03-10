@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { OptionDrawer } from '@/components';
+import { InputArea, OptionDrawer, OutputArea } from '@/components';
 
 export default function Home() {
   return (
@@ -22,18 +22,17 @@ export default function Home() {
       </Head>
       <OptionDrawer>
         <div className="flex h-full w-full p-6">
-          <div className="card grid flex-grow place-items-center bg-base-300">
-            content1
+          <div className="-mt-2 flex-grow">
+            <InputArea />
           </div>
           <div className="divider divider-horizontal" />
-          <div className="flex-grow">
+          <div className="-mt-2 flex-grow">
             <div className="flex h-full flex-col">
-              <div className="card grid flex-grow place-items-center bg-base-300">
-                content2
+              <div className="flex-grow">
+                <OutputArea />
               </div>
-              <div className="divider" />
-              <div className="card grid flex-grow place-items-center bg-base-300">
-                content3
+              <div className="flex-grow">
+                <OutputArea />
               </div>
             </div>
           </div>
