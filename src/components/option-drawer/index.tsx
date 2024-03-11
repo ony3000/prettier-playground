@@ -1,8 +1,14 @@
 import type { ComponentProps } from 'react';
+import { Fragment } from 'react';
+
+import { useOptionDrawer } from './hooks';
+import { BooleanOptionItem, ChoiceOptionItem, NumberOptionItem } from './parts';
 
 export function OptionDrawer({
   children,
 }: Pick<ComponentProps<'div'>, 'children'>) {
+  const { editableOptions, setPrettierOptions } = useOptionDrawer();
+
   return (
     <div className="drawer md:drawer-open">
       <input
@@ -17,14 +23,23 @@ export function OptionDrawer({
         {children}
       </div>
       <div className="drawer-side">
-        <ul className="menu min-h-full w-80 bg-base-200 p-4 text-base-content">
-          <li>
-            <a>Sidebar Item 1</a>
-          </li>
-          <li>
-            <a>Sidebar Item 2</a>
-          </li>
-        </ul>
+        <div className="min-h-full bg-base-200 p-4 text-base-content">
+          <ul className="flex w-80 flex-col p-2">
+            {editableOptions.map((option) => (
+              <Fragment key={option.name}>
+                {option.type === 'boolean' && (
+                  <BooleanOptionItem option={option} />
+                )}
+                {option.type === 'number' && (
+                  <NumberOptionItem option={option} />
+                )}
+                {option.type === 'choice' && (
+                  <ChoiceOptionItem option={option} />
+                )}
+              </Fragment>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
