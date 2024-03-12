@@ -1,13 +1,23 @@
 import type { ComponentProps } from 'react';
-import { Fragment } from 'react';
+import { useCallback, Fragment } from 'react';
 
 import { useOptionDrawer } from './hooks';
 import { BooleanOptionItem, ChoiceOptionItem, NumberOptionItem } from './parts';
+import type { EditableOption } from './types';
 
 export function OptionDrawer({
   children,
 }: Pick<ComponentProps<'div'>, 'children'>) {
   const { editableOptions, setPrettierOptions } = useOptionDrawer();
+
+  const updatePrettierOptions = useCallback(
+    (option: EditableOption, newValue: EditableOption['defaultValue']) =>
+      setPrettierOptions((prevOptions) => ({
+        ...prevOptions,
+        [option.name]: newValue,
+      })),
+    [setPrettierOptions],
+  );
 
   return (
     <div className="drawer md:drawer-open">
@@ -28,13 +38,28 @@ export function OptionDrawer({
             {editableOptions.map((option) => (
               <Fragment key={option.name}>
                 {option.type === 'boolean' && (
-                  <BooleanOptionItem option={option} />
+                  <BooleanOptionItem
+                    option={option}
+                    onChange={(newValue) =>
+                      updatePrettierOptions(option, newValue)
+                    }
+                  />
                 )}
                 {option.type === 'number' && (
-                  <NumberOptionItem option={option} />
+                  <NumberOptionItem
+                    option={option}
+                    onChange={(newValue) =>
+                      updatePrettierOptions(option, newValue)
+                    }
+                  />
                 )}
                 {option.type === 'choice' && (
-                  <ChoiceOptionItem option={option} />
+                  <ChoiceOptionItem
+                    option={option}
+                    onChange={(newValue) =>
+                      updatePrettierOptions(option, newValue)
+                    }
+                  />
                 )}
               </Fragment>
             ))}

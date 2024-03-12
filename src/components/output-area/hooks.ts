@@ -2,18 +2,14 @@ import { useState, useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import { z } from 'zod';
 
-import { plainTextAtom } from '@/shared-kernel/stores';
+import { plainTextAtom, prettierOptionsAtom } from '@/shared-kernel/stores';
 import { isTypeof } from '@/shared-kernel/utils';
 
 import { v2Format, v3Format } from './libs';
 
-// temporary use
-const prettierOptions: any = {
-  parser: 'babel',
-};
-
 export function useOutputArea(version: 2 | 3) {
   const plainText = useRecoilValue(plainTextAtom);
+  const prettierOptions = useRecoilValue(prettierOptionsAtom);
   const [formattingResult, setFormattingResult] = useState('');
 
   useEffect(() => {
@@ -43,7 +39,7 @@ export function useOutputArea(version: 2 | 3) {
     }
 
     formatAsync(plainText, prettierOptions);
-  }, [plainText, version]);
+  }, [plainText, prettierOptions, version]);
 
   return {
     formattingResult,

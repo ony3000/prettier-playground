@@ -1,5 +1,6 @@
 declare global {
   type PrettierOptions = {
+    parser: string;
     printWidth: number;
     tabWidth: number;
     useTabs: boolean;

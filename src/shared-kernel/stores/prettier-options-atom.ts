@@ -3,6 +3,7 @@ import { atom } from 'recoil';
 export const prettierOptionsAtom = atom<PrettierOptions>({
   key: 'prettierOptionsAtom',
   default: {
+    parser: 'babel',
     printWidth: 80,
     tabWidth: 2,
     useTabs: false,
