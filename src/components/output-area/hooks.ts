@@ -10,16 +10,21 @@ import { v2Format, v3Format } from './libs';
 export function useOutputArea(version: 2 | 3) {
   const plainText = useRecoilValue(plainTextAtom);
   const prettierOptions = useRecoilValue(prettierOptionsAtom);
-  const [formattingResult, setFormattingResult] = useState('');
+  const [formattingResult, setFormattingResult] = useState<{
+    type: 'normal' | 'error';
+    text: string;
+  }>({ type: 'normal', text: '' });
 
   useEffect(() => {
     async function formatAsync(text: string, options: any) {
       try {
-        setFormattingResult(
-          version === 2
-            ? v2Format(text, options)
-            : await v3Format(text, options),
-        );
+        setFormattingResult({
+          type: 'normal',
+          text:
+            version === 2
+              ? v2Format(text, options)
+              : await v3Format(text, options),
+        });
       }
       catch (error) {
         if (
@@ -30,7 +35,10 @@ export function useOutputArea(version: 2 | 3) {
             }),
           )
         ) {
-          setFormattingResult(error.message);
+          setFormattingResult({
+            type: 'error',
+            text: error.message,
+          });
           return;
         }
 
@@ -42,6 +50,7 @@ export function useOutputArea(version: 2 | 3) {
   }, [plainText, prettierOptions, version]);
 
   return {
+    printWidth: prettierOptions.printWidth,
     formattingResult,
   };
 }

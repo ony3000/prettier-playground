@@ -10,7 +10,7 @@ export function InputArea() {
       </div>
       <textarea
         className="textarea-bordered textarea textarea-xs h-full resize-none
-          whitespace-pre font-mono"
+          whitespace-pre font-mono focus:textarea-primary"
         spellCheck={false}
         onInput={(e) => setPlainText(e.target.value)}
       />

@@ -35,7 +35,7 @@ export function NumberOptionItem({
       <span>{option.name}</span>
       <input
         type="number"
-        className="input-bordered input-primary input input-xs w-20"
+        className="input-bordered input input-xs w-20 focus:input-primary"
         min={0}
         defaultValue={option.defaultValue}
         onInput={(e) => onChange?.(Number(e.target.value))}
@@ -55,7 +55,7 @@ export function ChoiceOptionItem({
     <li className="flex min-h-[36px] items-center justify-between px-4">
       <span>{option.name}</span>
       <select
-        className="select-primary select select-xs"
+        className="select-bordered select select-xs focus:select-primary"
         defaultValue={option.defaultValue}
         onChange={(e) => onChange?.(e.target.value)}
       >
