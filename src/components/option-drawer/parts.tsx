@@ -38,7 +38,7 @@ export function NumberOptionItem({
         className="input-bordered input input-xs w-20 focus:input-primary"
         min={0}
         defaultValue={option.defaultValue}
-        onInput={(e) => onChange?.(Number(e.target.value))}
+        onInput={(e) => onChange?.(Number(e.currentTarget.value))}
       />
     </li>
   );

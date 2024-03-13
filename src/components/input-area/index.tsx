@@ -12,7 +12,7 @@ export function InputArea() {
         className="textarea-bordered textarea textarea-xs h-full resize-none
           whitespace-pre font-mono focus:textarea-primary"
         spellCheck={false}
-        onInput={(e) => setPlainText(e.target.value)}
+        onInput={(e) => setPlainText(e.currentTarget.value)}
       />
     </div>
   );
