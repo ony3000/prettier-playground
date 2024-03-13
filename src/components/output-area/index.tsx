@@ -10,7 +10,7 @@ export function OutputArea({ version }: { version: 2 | 3 }) {
   const characterWidthInPixels = 6.6;
 
   return (
-    <label className="form-control h-full">
+    <div className="form-control h-full">
       <div className="label">
         <span className="label-text">Output (v{prettierVersion})</span>
       </div>
@@ -32,6 +32,6 @@ export function OutputArea({ version }: { version: 2 | 3 }) {
           }px`,
         }}
       />
-    </label>
+    </div>
   );
 }

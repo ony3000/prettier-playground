@@ -42,6 +42,7 @@ export function useOutputArea(version: 2 | 3) {
           return;
         }
 
+        // eslint-disable-next-line no-console
         console.error(error);
       }
     }

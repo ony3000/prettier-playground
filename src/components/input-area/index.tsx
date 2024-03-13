@@ -4,7 +4,7 @@ export function InputArea() {
   const { setPlainText } = useInputArea();
 
   return (
-    <label className="form-control h-full">
+    <div className="form-control h-full">
       <div className="label">
         <span className="label-text">Input</span>
       </div>
@@ -14,6 +14,6 @@ export function InputArea() {
         spellCheck={false}
         onInput={(e) => setPlainText(e.target.value)}
       />
-    </label>
+    </div>
   );
 }
