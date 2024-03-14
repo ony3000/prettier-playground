@@ -3,11 +3,11 @@ import { classNames } from '@/adaptors';
 import { useOutputArea } from './hooks';
 
 export function OutputArea({ version }: { version: 2 | 3 }) {
-  const { printWidth, formattingResult } = useOutputArea(version);
+  const { printWidth, formattingResult, characterWidthInPixels } =
+    useOutputArea(version);
   const prettierVersion = version === 2 ? '2.8.4' : '3.0.3';
 
   const textareaLeftPaddingInPixels = 8;
-  const characterWidthInPixels = 6.6;
 
   return (
     <div className="form-control h-full">
