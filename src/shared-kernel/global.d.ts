@@ -7,7 +7,7 @@ declare global {
     semi: boolean;
     singleQuote: boolean;
     jsxSingleQuote: boolean;
-    trailingComma: 'all' | 'none' | 'es5';
+    trailingComma: 'none' | 'es5' | 'all';
     bracketSpacing: boolean;
     bracketSameLine: boolean;
     jsxBracketSameLine: boolean;
@@ -15,11 +15,11 @@ declare global {
     rangeEnd: number;
     requirePragma: boolean;
     insertPragma: boolean;
-    proseWrap: 'preserve' | 'always' | 'never';
-    arrowParens: 'always' | 'avoid';
+    proseWrap: 'always' | 'never' | 'preserve';
+    arrowParens: 'avoid' | 'always';
     htmlWhitespaceSensitivity: 'css' | 'strict' | 'ignore';
-    endOfLine: 'lf' | 'auto' | 'crlf' | 'cr';
-    quoteProps: 'preserve' | 'as-needed' | 'consistent';
+    endOfLine: 'auto' | 'lf' | 'crlf' | 'cr';
+    quoteProps: 'as-needed' | 'consistent' | 'preserve';
     vueIndentScriptAndStyle: boolean;
     embeddedLanguageFormatting: 'auto' | 'off';
     singleAttributePerLine: boolean;
