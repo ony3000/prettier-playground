@@ -1,18 +1,21 @@
 import { classNames } from '@/adaptors';
 
 import { useOutputArea } from './hooks';
+import type { FormattingResult } from './types';
 
-export function OutputArea({ version }: { version: 2 | 3 }) {
-  const { printWidth, formattingResult, characterWidthInPixels } =
-    useOutputArea(version);
-  const prettierVersion = version === 2 ? '2.8.4' : '3.0.3';
-
-  const textareaLeftPaddingInPixels = 8;
-
+function LegacyOutputArea({
+  title,
+  formattingResult,
+  backgroundPositionXInPixels,
+}: {
+  title: string;
+  formattingResult: FormattingResult;
+  backgroundPositionXInPixels: number;
+}) {
   return (
     <div className="form-control h-full">
       <div className="label">
-        <span className="label-text">Output (v{prettierVersion})</span>
+        <span className="label-text">{title}</span>
       </div>
       <textarea
         readOnly
@@ -27,11 +30,55 @@ export function OutputArea({ version }: { version: 2 | 3 }) {
         )}
         value={formattingResult.text}
         style={{
-          backgroundPositionX: `${
-            textareaLeftPaddingInPixels + characterWidthInPixels * printWidth
-          }px`,
+          backgroundPositionX: `${backgroundPositionXInPixels}px`,
         }}
       />
+    </div>
+  );
+}
+
+export function OutputArea() {
+  const {
+    printWidth,
+    v2FormattingResult,
+    v3FormattingResult,
+    characterWidthInPixels,
+  } = useOutputArea();
+
+  const isSameResult = v2FormattingResult.text === v3FormattingResult.text;
+
+  const textareaLeftPaddingInPixels = 8;
+  const backgroundPositionXInPixels =
+    textareaLeftPaddingInPixels + characterWidthInPixels * printWidth;
+
+  return (
+    <div className="flex h-full flex-col">
+      {isSameResult ? (
+        <div className="flex-grow">
+          <LegacyOutputArea
+            title="Output"
+            formattingResult={v2FormattingResult}
+            backgroundPositionXInPixels={backgroundPositionXInPixels}
+          />
+        </div>
+      ) : (
+        <>
+          <div className="flex-grow">
+            <LegacyOutputArea
+              title="Output (v2.8.4)"
+              formattingResult={v2FormattingResult}
+              backgroundPositionXInPixels={backgroundPositionXInPixels}
+            />
+          </div>
+          <div className="flex-grow">
+            <LegacyOutputArea
+              title="Output (v3.0.3)"
+              formattingResult={v3FormattingResult}
+              backgroundPositionXInPixels={backgroundPositionXInPixels}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }
