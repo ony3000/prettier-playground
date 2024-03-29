@@ -8,7 +8,7 @@ const editableOptions: EditableOption[] = [
   {
     type: 'choice',
     name: 'parser',
-    values: ['babel', 'typescript', 'vue', 'html'],
+    values: ['babel', 'typescript', 'vue', 'html', 'astro'],
     defaultValue: 'babel',
   },
   {

@@ -40,6 +40,8 @@
     "jest-environment-jsdom": "29.5.0",
     "next": "13.2.3",
     "postcss": "8.4.21",
+    "ppa10": "npm:prettier-plugin-astro@0.10.0",
+    "ppa11": "npm:prettier-plugin-astro@0.11.0",
     "prettier": "3.0.3",
     "prettier-plugin-brace-style": "0.6.0",
     "prettier-plugin-classnames": "0.6.3",

@@ -24,58 +24,77 @@ export function useOutputArea() {
   const [characterWidthInPixels, setCharacterWidthInPixels] = useState(NaN);
 
   useEffect(() => {
-    async function formatAsync(text: string, options: any) {
+    async function formatAsync(text: string, options: PrettierOptions) {
       let v2Result: FormattingResult = {
         type: 'normal',
         text: '',
       };
-      try {
-        v2Result.text = v2Format(text, options);
-      }
-      catch (error) {
-        if (
-          isTypeof(
-            error,
-            z.object({
-              message: z.string(),
-            }),
-          )
-        ) {
-          v2Result = {
-            type: 'error',
-            text: error.message,
-          };
-        }
-        else {
-          // eslint-disable-next-line no-console
-          console.error(error);
-        }
-      }
-
       let v3Result: FormattingResult = {
         type: 'normal',
         text: '',
       };
-      try {
-        v3Result.text = await v3Format(text, options);
+
+      if (options.parser === 'astro') {
+        const response = await fetch('/api/format', {
+          method: 'POST',
+          body: JSON.stringify({
+            source: text,
+            options,
+          }),
+        });
+        const jsonData: {
+          v2Result: FormattingResult;
+          v3Result: FormattingResult;
+        } = await response.json();
+
+        v2Result = jsonData.v2Result;
+        v3Result = jsonData.v3Result;
       }
-      catch (error) {
-        if (
-          isTypeof(
-            error,
-            z.object({
-              message: z.string(),
-            }),
-          )
-        ) {
-          v3Result = {
-            type: 'error',
-            text: error.message,
-          };
+      else {
+        try {
+          v2Result.text = v2Format(text, options);
         }
-        else {
-          // eslint-disable-next-line no-console
-          console.error(error);
+        catch (error) {
+          if (
+            isTypeof(
+              error,
+              z.object({
+                message: z.string(),
+              }),
+            )
+          ) {
+            v2Result = {
+              type: 'error',
+              text: error.message,
+            };
+          }
+          else {
+            // eslint-disable-next-line no-console
+            console.error(error);
+          }
+        }
+
+        try {
+          v3Result.text = await v3Format(text, options);
+        }
+        catch (error) {
+          if (
+            isTypeof(
+              error,
+              z.object({
+                message: z.string(),
+              }),
+            )
+          ) {
+            v3Result = {
+              type: 'error',
+              text: error.message,
+            };
+          }
+          else {
+            // eslint-disable-next-line no-console
+            console.error(error);
+          }
         }
       }
 
