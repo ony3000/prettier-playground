@@ -95,7 +95,6 @@ export default async function handler(
     }
   }
 
-  res.setHeader('Cache-Control', 'public, max-age=86400');
   res.status(200).json({
     v2Result,
     v3Result,
