@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "rimraf .next && next dev",
-    "build": "rimraf .next && next build",
+    "build": "rimraf .next && rimraf src/pages/api && next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest --ci --passWithNoTests",

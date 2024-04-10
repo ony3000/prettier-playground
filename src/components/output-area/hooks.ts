@@ -8,6 +8,11 @@ import { isTypeof } from '@/shared-kernel/utils';
 import { v2Format, v3Format } from './libs';
 import type { FormattingResult } from './types';
 
+const apiErrorPlaceholder: FormattingResult = {
+  type: 'error',
+  text: 'Formatting for this parser is supported only on the localhost.',
+};
+
 export function useOutputArea() {
   const plainText = useRecoilValue(plainTextAtom);
   const prettierOptions = useRecoilValue(prettierOptionsAtom);
@@ -42,13 +47,20 @@ export function useOutputArea() {
             options,
           }),
         });
-        const jsonData: {
-          v2Result: FormattingResult;
-          v3Result: FormattingResult;
-        } = await response.json();
 
-        v2Result = jsonData.v2Result;
-        v3Result = jsonData.v3Result;
+        if (response.status === 404) {
+          v2Result = apiErrorPlaceholder;
+          v3Result = apiErrorPlaceholder;
+        }
+        else {
+          const jsonData: {
+            v2Result: FormattingResult;
+            v3Result: FormattingResult;
+          } = await response.json();
+
+          v2Result = jsonData.v2Result;
+          v3Result = jsonData.v3Result;
+        }
       }
       else {
         try {
