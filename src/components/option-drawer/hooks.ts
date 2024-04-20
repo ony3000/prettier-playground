@@ -26,6 +26,11 @@ const editableOptions: EditableOption[] = [
     name: 'useTabs',
     defaultValue: false,
   },
+  {
+    type: 'boolean',
+    name: 'singleQuote',
+    defaultValue: false,
+  },
 ];
 
 export function useOptionDrawer() {
