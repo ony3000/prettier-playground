@@ -31,6 +31,11 @@ const editableOptions: EditableOption[] = [
     name: 'singleQuote',
     defaultValue: false,
   },
+  {
+    type: 'boolean',
+    name: 'jsxSingleQuote',
+    defaultValue: false,
+  },
 ];
 
 export function useOptionDrawer() {
