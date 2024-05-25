@@ -26,7 +26,9 @@ export function useOutputArea() {
       type: 'normal',
       text: '',
     });
-  const [characterWidthInPixels, setCharacterWidthInPixels] = useState(NaN);
+  const [characterWidthInPixels, setCharacterWidthInPixels] = useState(
+    Number.NaN,
+  );
 
   useEffect(() => {
     async function formatAsync(text: string, options: PrettierOptions) {
@@ -81,7 +83,6 @@ export function useOutputArea() {
             };
           }
           else {
-            // eslint-disable-next-line no-console
             console.error(error);
           }
         }
@@ -104,7 +105,6 @@ export function useOutputArea() {
             };
           }
           else {
-            // eslint-disable-next-line no-console
             console.error(error);
           }
         }
