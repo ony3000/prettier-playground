@@ -64,7 +64,6 @@ export default async function handler(
       };
     }
     else {
-      // eslint-disable-next-line no-console
       console.error(error);
     }
   }
@@ -90,7 +89,6 @@ export default async function handler(
       };
     }
     else {
-      // eslint-disable-next-line no-console
       console.error(error);
     }
   }

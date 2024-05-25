@@ -81,7 +81,6 @@ export function useOutputArea() {
             };
           }
           else {
-            // eslint-disable-next-line no-console
             console.error(error);
           }
         }
@@ -104,7 +103,6 @@ export function useOutputArea() {
             };
           }
           else {
-            // eslint-disable-next-line no-console
             console.error(error);
           }
         }
