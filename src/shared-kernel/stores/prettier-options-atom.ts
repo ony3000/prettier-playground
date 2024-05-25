@@ -15,7 +15,7 @@ export const prettierOptionsAtom = atom<PrettierOptions>({
     bracketSameLine: false,
     jsxBracketSameLine: false,
     rangeStart: 0,
-    rangeEnd: Infinity,
+    rangeEnd: Number.POSITIVE_INFINITY,
     requirePragma: false,
     insertPragma: false,
     proseWrap: 'preserve',
