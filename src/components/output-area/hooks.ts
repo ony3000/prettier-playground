@@ -26,7 +26,9 @@ export function useOutputArea() {
       type: 'normal',
       text: '',
     });
-  const [characterWidthInPixels, setCharacterWidthInPixels] = useState(Number.NaN);
+  const [characterWidthInPixels, setCharacterWidthInPixels] = useState(
+    Number.NaN,
+  );
 
   useEffect(() => {
     async function formatAsync(text: string, options: PrettierOptions) {
