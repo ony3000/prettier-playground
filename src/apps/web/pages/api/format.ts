@@ -1,10 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-// @ts-ignore
-import * as ppa10 from 'ppa10';
-// @ts-ignore
-import * as ppa11 from 'ppa11';
-import { format as format2 } from 'prettier2';
-import { format as format3 } from 'prettier3';
 import { z } from 'zod';
 
 import type { FormattingResult } from '@/components/output-area/types';
@@ -44,10 +38,7 @@ export default async function handler(
   };
 
   try {
-    v2Result.text = format2(payload.source, {
-      ...payload.options,
-      plugins: payload.options.parser === 'astro' ? [ppa10] : [],
-    });
+    v2Result.text = payload.source;
   }
   catch (error) {
     if (
@@ -69,10 +60,7 @@ export default async function handler(
   }
 
   try {
-    v3Result.text = await format3(payload.source, {
-      ...payload.options,
-      plugins: payload.options.parser === 'astro' ? [ppa11] : [],
-    });
+    v3Result.text = payload.source;
   }
   catch (error) {
     if (
