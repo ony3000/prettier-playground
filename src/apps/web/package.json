@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "rimraf .next && next dev",
-    "build": "rimraf .next && rimraf src/pages/api && next build",
+    "build": "rimraf .next && rimraf pages/api && next build",
     "start": "next start"
   },
   "dependencies": {
