@@ -4,5 +4,11 @@
   "version": "0.0.0",
   "author": "Hyeonjong <nianelo4@gmail.com>",
   "license": "MIT",
-  "scripts": {}
+  "scripts": {},
+  "dependencies": {
+    "prettier": "3.0.3"
+  },
+  "devDependencies": {
+    "prettier-plugin-astro": "0.11.0"
+  }
 }
