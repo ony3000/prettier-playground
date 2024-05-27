@@ -6,7 +6,10 @@ const rem2px = (size) => `${Number.parseFloat(size) * 16}px`;
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
     borderRadius: {
       none: '0px',

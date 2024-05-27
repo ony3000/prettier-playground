@@ -6,9 +6,6 @@
   "author": "Hyeonjong <nianelo4@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "rimraf .next && next dev",
-    "build": "rimraf .next && rimraf src/pages/api && next build",
-    "start": "next start",
     "lint": "biome lint .",
     "lint:fix": "biome lint --apply .",
     "test": "jest --ci --passWithNoTests",

@@ -4,7 +4,11 @@
   "version": "0.0.0",
   "author": "Hyeonjong <nianelo4@gmail.com>",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "dev": "rimraf .next && next dev",
+    "build": "rimraf .next && rimraf src/pages/api && next build",
+    "start": "next start"
+  },
   "dependencies": {
     "@types/node": "18.14.2",
     "@types/react": "18.0.28",
