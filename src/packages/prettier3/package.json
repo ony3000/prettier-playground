@@ -4,11 +4,17 @@
   "version": "0.0.0",
   "author": "Hyeonjong <nianelo4@gmail.com>",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "dev": "vite build --watch --minify=false",
+    "preview": "vite build --minify=false",
+    "build": "vite build"
+  },
   "dependencies": {
     "prettier": "3.0.3"
   },
   "devDependencies": {
-    "prettier-plugin-astro": "0.11.0"
+    "prettier-plugin-astro": "0.11.0",
+    "vite": "5.0.11",
+    "vite-plugin-dts": "3.7.0"
   }
 }
